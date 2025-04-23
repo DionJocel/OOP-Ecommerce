@@ -150,6 +150,12 @@ a.no-hover::after {
     width: 40px;
     height: 40px;
     margin-top: 4px;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+.profile:hover {
+    scale: 1.1;
+    
 }
 .hero {
     width: 100%;
@@ -759,117 +765,188 @@ button.purchase:hover {
 .carousel-nav a:hover {
     opacity: 100%;
 }
-footer {
-    width: 100%;
-    height: 40dvh;
-    background: linear-gradient(to top, black, gray);
-    display: flex;
-    justify-content: space-evenly;
+.vibecity-footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+    color: #ffffff;
+    padding: 50px 0 0;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
 }
-.footer-column-1 {
+
+.footer-content {
     display: flex;
-    align-items: center;
-    width: 30%;
-    height: 100%;
-    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+    padding: 0 15px;
+}
+
+.logo-column {
+    width: 120px;
+    flex: 1.5;
+}
+
 .footer-logo-box {
-    width: 100%;
-    height: 95%;
+    width: 320px;
+    margin-bottom: 15px;
 }
+
 .footer-logo-box img {
-    width: 100%;
-    height: 100%;
+    width: 50%;
     object-fit: cover;
-    filter: drop-shadow(2px 2px 20px white);
+    background-color: white;
+    border-radius: 50%;
 }
-.footer-logo-box h2 {
+
+.brand-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.copyright {
+    color: #b3b3b3;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background: #ffffff;
+    color: #1a1a1a;
+    transform: translateY(-3px);
+}
+
+.footer-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    color: #ffffff;
+}
+
+.footer-title::after {
+    content: '';
     position: absolute;
-    bottom: 4%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background: #ffffff;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contact-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    color: #b3b3b3;
+}
+
+.contact-list i {
+    margin-right: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    margin-top: 3px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #b3b3b3;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+.footer-links i {
+    margin-right: 8px;
+    font-size: 10px;
+    color: #ffffff;
+}
+
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px 0;
     text-align: center;
-    z-index: 3;
-    color: rgba(255, 255, 255, 0.541);
-    font-size: 1rem;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+    font-size: 14px;
+    color: #b3b3b3;
 }
-.footer-column-2 {
-    width: 30%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+.footer-bottom i {
+    color: #ff4d4d;
+    margin: 0 5px;
 }
-.footer-column-2 h1 {
-    font-size: 1.7rem;
-    font-family: "Audiowide", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-    padding: 3dvh;
-    color: rgba(0, 0, 0, 0.726);
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.411);
-}
-.footer-column-2 ul {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding-bottom: 20dvh;
-}
-.footer-column-2 li,
-.fa-at {
-    font-family: "Audiowide", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.61);
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.986);
-}
-.footer-column-2 li {
-    padding-bottom: 2dvh;
-}
-.faf {
-    padding-right: 0.3dvw;
-}
-.footer-column-3 {
-    width: 30%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.footer-column-3 h3 {
-    font-size: 1.2rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 400;
-    padding-top: 8dvh;
-    padding-bottom: 4dvh;
-    padding-left: 10dvw;
-    width: 100%;
-    color: rgba(0, 0, 0, 0.829);
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.63);
-}
-.links {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-}
-.footer-column-3 ul {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    row-gap: 5px;
-}
-.footer-column-3 a {
-    text-decoration: underline;
-    color: rgb(255, 255, 255);
-    font-weight: 200;
+
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-column {
+        margin-bottom: 30px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 0;
+    }
 }
 
 @media screen and (max-width: 1024px) {
@@ -1093,15 +1170,14 @@ footer {
     #pic2 {
         object-position: right;
     }
-    .footer-column-2 li {
-        font-size: 0.6rem;
+    .footer-content {
+        flex-direction: column;
     }
-    .footer-column-3 {
-        display: none;
+    .footer-column {
+        margin-bottom: 30px;
     }
-    .footer-logo-box h2 {
-        bottom: 14%;
-        font-size: 0.8rem;
-        width: 100%;
+    .footer-links {
+        flex-direction: column;
+        gap: 0;
     }
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title> Vibe City Clothing </title>
 </head>
@@ -23,7 +24,7 @@
         </nav>
         <div class="nav-right-section">
             <a href="#products" class="no-hover"><img src="shopping-bag.png" class="basket"></a>
-            <img src="boy.png" class="profile">
+            <img src="profile.png" class="profile" onclick="window.location.href='profile.html';">
         </div>
         <i class="fa fa-bars" onclick="menutoggle()"></i>
     </header>
@@ -365,8 +366,8 @@
             <div class="social-medias">
                 <h4> Follow us ! </h4>
                 <div class="icons">
-                    <i class="fa-brands fa-facebook"></i>
                     <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
                     <i class="fa-brands fa-x-twitter"></i>
                     <i class="fa-brands fa-tiktok"></i>
                 </div>
@@ -391,35 +392,59 @@
             </div>
         </div>
     </section>
-    <footer>
-        <div class="footer-column-1">
-            <div class="footer-logo-box">
-                <img src="logo-transparent.png">
-                <h2> &copy; 2025 Vibe City Clothing </h2>
+    <footer class="vibecity-footer">
+        <div class="footer-content">
+            <div class="footer-column logo-column">
+                <div class="footer-logo-box">
+                    <img src="logo-transparent.png" alt="Vibe City Clothing Logo">
+                    <h2 class="brand-name">Vibe City Clothing</h2>
+                    <p class="copyright">&copy; 2025 All Rights Reserved</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-column contact-column">
+                <h3 class="footer-title">Contact Us</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>1234 Longos, Malolos, Bulacan</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>vibecityclothing@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(63)987-654-3210</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-column links-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#deals"><i class="fas fa-chevron-right"></i> Flash Deals</a></li>
+                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Products</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQs</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="footer-column-2">
-            <h1> Contact Us </h1>
-            <ul>
-                <li> <i class="faf fas fa-solid fa-location-dot"></i> 1234 Longos, Malolos, Bulacan </li>
-                <li> <i class="faf fa fa-regular fa-envelope"></i> vibecityclothing@gmail.com</li>
-                <li> <i class="faf fas fa-solid fa-headset"></i> (63)987-654-3210 </li>
-            </ul>
-        </div>
-        <div class="footer-column-3">
-            <h3> Quick Links </h3>
-            <div class="links">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#deals">Flash Deals</a></li>
-                    <li><a href="#products">Products</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Help Center</a></li>
-                </ul>
-            </div>
+
+        <div class="footer-bottom">
+            <p> Vibecity Official </p>
         </div>
     </footer>
     <script src="script.js"></script>
