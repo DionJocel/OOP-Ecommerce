@@ -487,14 +487,20 @@
             }
         }
 
-        function moveImg() {
-            const img = document.getElementById('img');
-            const loginSection = document.getElementById('loginSection');
-            const registerSection = document.getElementById('registerSection');
-            const maxWidth = screen.width;
+        const img = document.getElementById('img');
+        const loginSection = document.getElementById('loginSection');
+        const registerSection = document.getElementById('registerSection');
+        const maxWidth = screen.width;
+        if(maxWidth > 600) {
+            img.style.transform = "translateX(100%)";
+        }
+        if(maxWidth <= 600) {
+            loginSection.style.transform = "translateX(100%)";
+            registerSection.style.transform = "translateX(0%)";
+        }
 
+        function moveImg() {
             if (maxWidth > 600) {
-                img.style.transform = "translateX(100%)";
                 if (img.style.transform == "translateX(100%)") {
                     img.style.transform = "translateX(0%)";
                 }
@@ -504,8 +510,6 @@
             }
 
             if (maxWidth <= 600) {
-                loginSection.style.transform = "translateX(100%)";
-                registerSection.style.transform = "translateX(0%)";
                 if (loginSection.style.transform == "translateX(100%)") {
                     loginSection.style.transform = "translateX(0%)";
                     registerSection.style.transform = "translateX(-100%)";
