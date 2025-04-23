@@ -725,29 +725,7 @@ function removeItems() {
         }
     }
 }
-function purchase() {
-    if (notEmpty == true && error == false) {
-        if (confirm('Are you sure you want to order these items? \n Your order total amount: ' + total)) {
-            alert('Order Successful! Your order is now being processed.');
-            document.getElementById("cartPopupItems").innerHTML = '';
-            total = 0;
-            document.getElementById("popupTotal").innerHTML = total;
-            notEmpty = false;
-            error = false;
-        }
-    }
-    else if (notEmpty == true && error == true) {
-        alert('Please put a valid size');
-        document.getElementById("cartPopupItems").innerHTML = '';
-        total = 0;
-        document.getElementById("popupTotal").innerHTML = total;
-        notEmpty = false;
-        error = false;
-    }
-    else {
-        alert('Please choose a product to order');
-    }
-}
+
 const MenuItems = document.getElementById('MenuItems');
 const screenWidth = screen.width;
 
@@ -780,16 +758,72 @@ window.addEventListener('click', function (event) {
 function updateBothCarts(imgSrc, name, size, price) {
     const popupTable = document.getElementById('cartPopupItems');
     const popupRow = popupTable.insertRow();
-    popupRow.insertCell(0).innerHTML = `<img src='${imgSrc}'>`;
-    popupRow.insertCell(1).innerHTML = name;
-    popupRow.insertCell(2).innerHTML = size;
-    popupRow.insertCell(3).innerHTML = "₱" + price;
+    
+    popupRow.insertCell(0).innerHTML = `<input type="checkbox" class="item-checkbox" checked>`;
+    popupRow.insertCell(1).innerHTML = `<img src='${imgSrc}'>`;
+    popupRow.insertCell(2).innerHTML = name;
+    popupRow.insertCell(3).innerHTML = size;
+    popupRow.insertCell(4).innerHTML = "₱" + price;
 
     if (error == false) {
         total = total + price;
         document.getElementById('popupTotal').innerHTML = total;
     } else {
         document.getElementById('popupTotal').innerHTML = "ERROR";
+    }
+}
+
+function purchase() {
+    if (notEmpty == true && error == false) {
+        const checkboxes = document.querySelectorAll('.item-checkbox');
+        const rows = document.querySelectorAll('#cartPopupItems tr');
+        let selectedItems = [];
+        let selectedTotal = 0;
+        let remainingItems = [];
+        
+        rows.forEach((row, index) => {
+            if (checkboxes[index].checked) {
+                const priceText = row.cells[4].textContent;
+                const price = parseInt(priceText.replace('₱', ''));
+                selectedTotal += price;
+                selectedItems.push(row);
+            } else {
+                remainingItems.push(row);
+            }
+        });
+        
+        if (selectedItems.length === 0) {
+            alert('Please select at least one item to checkout');
+            return;
+        }
+        
+        if (confirm(`Are you sure you want to order the selected items? \n Your order total amount: ₱${selectedTotal}`)) {
+            selectedItems.forEach(row => row.remove());
+            total = 0;
+            remainingItems.forEach(row => {
+                const priceText = row.cells[4].textContent;
+                total += parseInt(priceText.replace('₱', ''));
+            });
+            
+            document.getElementById('popupTotal').innerHTML = total;
+            
+            if (remainingItems.length === 0) {
+                notEmpty = false;
+            }
+            
+            alert('Order Successful! Your order is now being processed.');
+        }
+    }
+    else if (notEmpty == true && error == true) {
+        alert('Please put a valid size');
+        document.getElementById("cartPopupItems").innerHTML = '';
+        total = 0;
+        document.getElementById("popupTotal").innerHTML = total;
+        notEmpty = false;
+        error = false;
+    }
+    else {
+        alert('Please choose a product to order');
     }
 }
 
