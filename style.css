@@ -1145,7 +1145,7 @@ button.purchase:hover {
     }
     .about-section {
         flex-direction: column-reverse;
-        height: 150dvh;
+        height: 200dvh;
     }
     .about-column-1 {
         width: 100%;
@@ -1173,11 +1173,14 @@ button.purchase:hover {
     .footer-content {
         flex-direction: column;
     }
-    .footer-column {
-        margin-bottom: 30px;
-    }
     .footer-links {
+        margin-top: -50px;
+        height: 40dvh;
         flex-direction: column;
+        justify-content: space-evenly;
         gap: 0;
+    }
+    .links-column {
+        margin-top: 30px;
     }
 }

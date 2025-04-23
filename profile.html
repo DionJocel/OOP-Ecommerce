@@ -740,18 +740,113 @@
         }
 
         @media screen and (max-width: 600px) {
-            .footer-content {
+            header {
+                flex-direction: row-reverse;
+            }
+
+            header .logo-section img {
+                display: none;
+            }
+
+            header .logo-section {
+                width: 30%;
+            }
+
+            header .logo-section h1 {
+                width: 90%;
+                text-align: center;
+                font-size: 2.9dvh;
+            }
+
+            header h1.maintext {
+                font-size: 4.3dvh;
+            }
+
+            header .return {
+                left: 3%;
+            }
+
+            header .fa-left-long {
+                font-size: 4dvh;
+            }
+
+            header h4 {
+                font-size: 2.4dvh;
+            }
+
+            .profile-container {
                 flex-direction: column;
             }
 
-            .footer-column {
-                margin-bottom: 30px;
+            .sidebar {
+                width: 100%;
             }
 
-            .footer-links {
-                flex-direction: column;
-                gap: 0;
+            .orders-table thead {
+                display: none;
             }
+
+            .orders-table tbody tr {
+                display: block;
+                margin-bottom: 20px;
+                background-color: white;
+                border-radius: var(--border-radius);
+                box-shadow: var(--box-shadow);
+                padding: 15px;
+            }
+
+            .orders-table tbody td {
+                display: flex;
+                justify-content: space-between;
+                padding: 8px 0;
+                border: none;
+                text-align: right;
+            }
+
+            .orders-table tbody td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                text-align: left;
+                margin-right: 10px;
+            }
+
+            .orders-table tbody td:nth-child(5) {
+                justify-content: flex-end;
+            }
+
+            .orders-table tbody td:last-child {
+                justify-content: center;
+                padding-top: 15px;
+            }
+
+            .orders-table .btn-outline {
+                width: 100%;
+            }
+        }
+
+        .orders-table td {
+            position: relative;
+        }
+
+        .orders-table td[data-label]::before {
+            content: attr(data-label);
+        }
+
+        .footer-content {
+            flex-direction: column;
+        }
+
+        .footer-links {
+            margin-top: -10px;
+            height: 40dvh;
+            flex-direction: column;
+            justify-content: space-evenly;
+            gap: 0;
+        }
+
+        .links-column {
+            margin-top: -30px;
+        }
         }
     </style>
 </head>
@@ -840,28 +935,28 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>#VC-7842</td>
-                            <td>May 10, 2025</td>
-                            <td>3</td>
-                            <td>₱345.99</td>
-                            <td><span class="status status-delivered">Delivered</span></td>
-                            <td><a href="#" class="btn btn-outline">View</a></td>
+                            <td data-label="Order ID">#VC-7842</td>
+                            <td data-label="Date">May 10, 2025</td>
+                            <td data-label="Items">3</td>
+                            <td data-label="Total">₱345.99</td>
+                            <td data-label="Status"><span class="status status-delivered">Delivered</span></td>
+                            <td data-label=""><a href="#" class="btn btn-outline">View</a></td>
                         </tr>
                         <tr>
-                            <td>#VC-6721</td>
-                            <td>May 14, 2025</td>
-                            <td>2</td>
-                            <td>₱250.00</td>
-                            <td><span class="status status-shipped">Shipped</span></td>
-                            <td><a href="#" class="btn btn-outline">Track</a></td>
+                            <td data-label="Order ID">#VC-6721</td>
+                            <td data-label="Date">May 14, 2025</td>
+                            <td data-label="Items">2</td>
+                            <td data-label="Total">₱250.00</td>
+                            <td data-label="Status"><span class="status status-shipped">Shipped</span></td>
+                            <td data-label=""><a href="#" class="btn btn-outline">Track</a></td>
                         </tr>
                         <tr>
-                            <td>#VC-5398</td>
-                            <td>May 15, 2025</td>
-                            <td>1</td>
-                            <td>₱120.00</td>
-                            <td><span class="status status-pending">Processing</span></td>
-                            <td><a href="#" class="btn btn-outline">Details</a></td>
+                            <td data-label="Order ID">#VC-5398</td>
+                            <td data-label="Date">May 15, 2025</td>
+                            <td data-label="Items">1</td>
+                            <td data-label="Total">₱120.00</td>
+                            <td data-label="Status"><span class="status status-pending">Processing</span></td>
+                            <td data-label=""><a href="#" class="btn btn-outline">Details</a></td>
                         </tr>
                     </tbody>
                 </table>

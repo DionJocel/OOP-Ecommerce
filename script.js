@@ -1052,7 +1052,12 @@ function purchase() {
         alert('Please choose a product to order');
     }
 }
-let MenuItems = document.getElementById('MenuItems');
+const MenuItems = document.getElementById('MenuItems');
+const screenWidth = screen.width;
+
+if(screenWidth <= 600) {
+    MenuItems.style.maxHeight = "0px";
+}
 function menutoggle(){
 	if(MenuItems.style.maxHeight == "0px")
 	{
