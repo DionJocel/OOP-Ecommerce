@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title> Vibe City Clothing </title>
+</head>
+<body id="home">
+    <header>
+        <div class="logo-section">
+            <img src="logo-transparent.png" alt="Vibe City Logo">
+            <h1> Vibe City Clothing </h1>
+        </div>
+        <nav>
+            <ul id="MenuItems">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#deals">FLASH DEALS</a></li>
+                <li><a href="products.html">PRODUCTS</a></li>
+                <li><a href="#about">ABOUT</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right-section">
+            <button class="cart-icon"><img src="shopping-bag.png" class="basket"></button>
+            <img src="profile.png" class="profile" onclick="window.location.href='profile.html';">
+        </div>
+        <i class="fa fa-bars" onclick="menutoggle()"></i>
+    </header>
+    <div class="cart-popup" id="cartPopup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h2>Your Cart</h2>
+            <button class="remove-cart" onclick="removeItems()">Remove all</button>
+            <div class="cart-table">
+                <table id="cartPopupTable">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartPopupItems"></tbody>
+                </table>
+            </div>
+            <h3>Total Amount: ₱<span id="popupTotal">0</span></h3>
+            <button class="purchase" onclick="purchase()">Place Order</button>
+        </div>
+    </div>
+    <section class="hero">
+        <div class="column-1">
+            <h3> Wear Your Vibe ! </h3>
+            <h1> WEEKDAYS <br> SALE </h1>
+            <h2> -20% DISCOUNT FOR EVERYTHING </h2>
+            <button class="hero-button"><a href="#products">Get Yours Now! <span>&#8594;</span> </a></button>
+        </div>
+        <div class="column-2">
+            <div class="shirt-box">
+                <img src="hero-img.png" class="shirt">
+            </div>
+        </div>
+    </section>
+    <section class="deals-section">
+        <div class="sample-box">
+            <div class="samples">
+                <div class="box-1"><img src="marvel.png"></div>
+                <div class="box-2"><img src="shirts.jpg" class="space"><img src="shirts2.jpg"></div>
+                <div class="box-3"><img src="hp.avif"></div>
+            </div>
+        </div>
+        <div class="flash-deal" id="deals">
+            <h1> FLASH DEALS ! FLASH DEALS ! FLASH DEALS ! FLASH DEALS ! FLASH DEALS ! FLASH DEALS ! FLASH DEALS ! FLASH
+                DEALS ! FLASH DEALS ! FLASH DEALS ! </h1>
+        </div>
+        <div class="discount">
+            <h2 class="discount"> -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT
+                -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20%
+                DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT -20% DISCOUNT </h2>
+        </div>
+        <div class="slider-deals">
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+            <div class="deal-container">
+                <div class="deal-box" onclick="addCartCap()">
+                    <div class="deal-img">
+                        <span> 20% off </span>
+                        <img src="deal1.jpg">
+                    </div>
+                    <div class="deal-info">
+                        <h2> Captain America T Shirt Full Sleeves Black Tee </h2>
+                        <span class="actual-price"> ₱1050 </span>
+                        <span class="price"> ₱840 </span>
+                    </div>
+                </div>
+                <div class="deal-box" onclick="addCartIronman()">
+                    <div class="deal-img">
+                        <span> 20% off </span>
+                        <img src="deal2.jpg">
+                    </div>
+                    <div class="deal-info">
+                        <h2> Marvel Iron Man T Shirt </h2>
+                        <span class="actual-price"> ₱950 </span>
+                        <span class="price"> ₱760 </span>
+                    </div>
+                </div>
+                <div class="deal-box" onclick="addCartThor()">
+                    <div class="deal-img">
+                        <span> 20% off </span>
+                        <img src="deal3.jpg">
+                    </div>
+                    <div class="deal-info">
+                        <h2> Thor Mjolnir Black T Shirt </h2>
+                        <span class="actual-price"> ₱1,150 </span>
+                        <span class="price"> ₱920 </span>
+                    </div>
+                </div>
+                <div class="deal-box" onclick="addCartBW()">
+                    <div class="deal-img">
+                        <span> 20% off </span>
+                        <img src="deal4.jpg">
+                    </div>
+                    <div class="deal-info">
+                        <h2> Marvel Black Widow T Shirt </h2>
+                        <span class="actual-price"> ₱600 </span>
+                        <span class="price"> ₱480 </span>
+                    </div>
+                </div>
+                <div class="deal-box" onclick="addCartHawkeye()">
+                    <div class="deal-img">
+                        <span> 20% off </span>
+                        <img src="deal5.jpg">
+                    </div>
+                    <div class="deal-info">
+                        <h2> Marvel HawkEye Black T Shirt </h2>
+                        <span class="actual-price"> ₱720 </span>
+                        <span class="price"> ₱576 </span>
+                    </div>
+                </div>
+                <div class="deal-box" onclick="addCartHulk()">
+                    <div class="deal-img">
+                        <span> 20% off </span>
+                        <img src="deal6.jpg">
+                    </div>
+                    <div class="deal-info">
+                        <h2> Marvel CLassic The Incredible Hulk White T Shirt </h2>
+                        <span class="actual-price"> ₱800 </span>
+                        <span class="price"> ₱640 </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="products-section" id="products">
+        <h1> QUICK ORDER HERE : </h1>
+        <div class="ordering-section">
+            <div class="products-column">
+                <h2> Our Products </h2>
+                <div class="products-container">
+                    <div class="product-box" onclick="addCartCap()">
+                        <div class="product-img">
+                            <img src="deal1.jpg" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Captain America T Shirt Full Sleeves Black Tee <span id="price">₱840</span>
+                            </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartIronman()">
+                        <div class="product-img">
+                            <img src="deal2.jpg" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Marvel Iron Man T Shirt <span id="price">₱760</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartThor()">
+                        <div class="product-img">
+                            <img src="deal3.jpg" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Thor Mjolnir Black T Shirt <span id="price">₱920</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartBW()">
+                        <div class="product-img">
+                            <img src="deal4.jpg" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Marvel Black Widow T Shirt <span id="price">₱480</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartHawkeye()">
+                        <div class="product-img">
+                            <img src="deal5.jpg" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Marvel HawkEye Black T Shirt <span id="price">₱576</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartHulk()">
+                        <div class="product-img">
+                            <img src="deal6.jpg" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Marvel CLassic The Incredible Hulk White T Shirt <span id="price">₱640</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartHogw()">
+                        <div class="product-img">
+                            <img src="hp.avif" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Harry Potter Hogwarts Design Tee <span id="price">₱550</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartMarvel()">
+                        <div class="product-img">
+                            <img src="marvel.png" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Marvel Logo Plain Black Tee <span id="price">₱650</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartHpalways()">
+                        <div class="product-img">
+                            <img src="hpalways.jpg" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Harry Potter Deathly Hallows Inspired TShirt <span id="price">₱470</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartPlainBlack()">
+                        <div class="product-img">
+                            <img src="plainblack.jpg" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Plain Black T Shirt Cotton <span id="price">₱180</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartPlainWhite()">
+                        <div class="product-img">
+                            <img src="plainwhite.avif" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Plain White T Shirt Cotton <span id="price">₱120</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartPlainBrown()">
+                        <div class="product-img">
+                            <img src="plainbrown.webp" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Plain Zine Brown T Shirt Cotton <span id="price">₱140</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartPlainBeige()">
+                        <div class="product-img">
+                            <img src="plainbeige.avif" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Plain Beige T Shirt Cotton <span id="price">₱150</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartPinkCardigan()">
+                        <div class="product-img">
+                            <img src="pinkcardigan.jpg" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Plus Button Up Drop Shoulder Cardigan <span id="price">₱530</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartBeigeCardigan()">
+                        <div class="product-img">
+                            <img src="beigecardigan.webp" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Beige Cardigan Buttons Crop Cardigan <span id="price">₱530</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartWhiteTurtleneck()">
+                        <div class="product-img">
+                            <img src="whiteturtleneck.webp" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Flannel Fabric Korean Style Long Sleeve Plain Turtleneck Pullover Top <span id="price">₱120</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartBlackTurtleneck()">
+                        <div class="product-img">
+                            <img src="blackturtleneck.webp" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Half Turtleneck Sweater Women Slim-fit Black <span id="price">₱170</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                    <div class="product-box" onclick="addCartWhitePolo()">
+                        <div class="product-img">
+                            <img src="whitepolo.webp" id="img">
+                        </div>
+                        <div class="product-info">
+                            <h2 id="name"> Ugmikdo Women's POLO Shirt V-Neck Short-Sleeved T-Shirt Solid Color top <span id="price">₱125</span> </h2>
+                        </div>
+                        <div class="product-popup">
+                            <h3> Add to Cart </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-column">
+                <h2> Your Cart </h2>
+                <button class="remove-cart" onclick="removeItems()"> Remove all </button>
+                <div class="cart-table">
+                    <table id="cart">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Name</th>
+                                <th>Size</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartItems"></tbody>
+                    </table>
+                </div>
+                <h3> Total Amount: ₱<span id="total"></span></h3>
+                <button class="purchase" onclick="purchase()"> Place Order</button>
+            </div>
+        </div>
+    </section>
+    <section class="about-section" id="about">
+        <div class="about-column-1">
+            <h1> Hello! We Are Vibe Ci-Tee </h1>
+            <h3> Tailored to perfection, worn with distinction, every garment is a testament to timeless elegance. </h3>
+            <div class="social-medias">
+                <h4> Follow us ! </h4>
+                <div class="icons">
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa-brands fa-tiktok"></i>
+                </div>
+            </div>
+        </div>
+        <div class="about-column-2">
+            <div class="carousel">
+                <div class="carousel-img">
+                    <img src="carousel-1.jpg" id="pic1">
+                    <img src="carousel-2.jpg" id="pic2">
+                    <img src="carousel-3.jpg" id="pic3">
+                    <img src="carousel-4.jpg" id="pic4">
+                    <img src="carousel-5.jpg" id="pic5">
+                </div>
+                <div class="carousel-nav">
+                    <a href="#pic1"></a>
+                    <a href="#pic2"></a>
+                    <a href="#pic3"></a>
+                    <a href="#pic4"></a>
+                    <a href="#pic5"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="vibecity-footer">
+        <div class="footer-content">
+            <div class="footer-column logo-column">
+                <div class="footer-logo-box">
+                    <img src="logo-transparent.png" alt="Vibe City Clothing Logo">
+                    <h2 class="brand-name">Vibe City Clothing</h2>
+                    <p class="copyright">&copy; 2025 All Rights Reserved</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-column contact-column">
+                <h3 class="footer-title">Contact Us</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>1234 Longos, Malolos, Bulacan</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>vibecityclothing@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(63)987-654-3210</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-column links-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#deals"><i class="fas fa-chevron-right"></i> Flash Deals</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQs</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p> Vibecity Official </p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <!-- references:
+     https://www.peakpx.com/en/hd-wallpaper-desktop-naeob
+     https://www.pinterest.com/pin/96616354485986582/
+     https://www.marvel.com/articles/gear/marvel-design-vault-exclusive-tshirt-club
+     https://www.etsy.com/listing/231925760/
+     https://pngtree.com/freebackground/collection-of-3d-illustrated-t-shirts_13301681.html
+     https://www.wallpaperflare.com/tshirts-photo-fashion-mens-fashion-clothes-t-shirts-planning-wallpaper-aanko
+     https://www.pinterest.com/pin/770256342493458012/
+     https://www.pinterest.com/pin/352195633360266022/
+     https://godfathershirts.com/product/thor-mjolnir-shirt/
+     https://www.pinterest.com/pin/615022892840661823/
+     https://mmv2api.s3-us-east-2.amazonaws.com/products/images/HWKT01.jpg
+     https://www.etsy.com/listing/1641892708/marvel-classic-the-incredible-hulk
+     https://www.pinterest.com/pin/589338301215539101/
+     https://www.carousell.ph/p/plain-black-t-shirt-1209694873/
+     https://www.etsy.com/ca/listing/786341965/blank-white-t-shirt-mockup
+     https://www.zumiez.com/zine-brown-t-shirt.html
+     https://www.freepik.com/premium-ai-image/blank-beige-tshirt-mockup-template_55115553.html
+     https://www.pinterest.com/pin/919226973915554464/
+     https://www.etsy.com/listing/945282173/
+     https://shopee.ph/-M-5XL-Plus-Size-Flannel-Fabric-Korean-Style-Long-Sleeve-Plain-T-Shirt-Handsome-Tops-Men's-Turtleneck-Pullover-Top-Fashion-High-neck-Loose-Tshirt-i.1017348295.22089381896?sp_atk=611804eb-88e3-45af-aec2-f839f33c34cc&xptdk=611804eb-88e3-45af-aec2-f839f33c34cc
+     https://shopee.ph/Half-Turtleneck-Sweater-Women-Autumn-Winter-New-Style-Slim-fit-Slimmer-Look-i.196214868.27208555895?sp_atk=d3e890da-a4f2-4c3c-85e3-57c56c68455d&xptdk=d3e890da-a4f2-4c3c-85e3-57c56c68455d
+     https://shopee.ph/Ugmikdo-Women's-POLO-Shirt-V-Neck-Short-Sleeved-T-Shirt-Solid-Color-top-i.893608767.23046863161?sp_atk=08cb036d-79d2-49bf-950b-722929bcd09c&xptdk=08cb036d-79d2-49bf-950b-722929bcd09c
+     https://www.vecteezy.com/photo/11911023-full-street-fashion-slender-figure-beautiful-face-graceful-girl-sitting-on-isolated-white-background-portrait-of-female-model-in-studio-plastic-surgery-and-aesthetic-cosmetology
+     https://www.pinterest.com/pin/496803402633287915/
+     https://www.pinterest.ca/pin/792070653217486496/
+     https://fity.club/lists/suggestions/posing-models/
+     https://wallpapercave.com/men-clothes-wallpapers
+    -->
+</body>
+</html>
