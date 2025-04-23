@@ -494,6 +494,7 @@
             const maxWidth = screen.width;
 
             if (maxWidth > 600) {
+                img.style.transform = "translateX(100%)";
                 if (img.style.transform == "translateX(100%)") {
                     img.style.transform = "translateX(0%)";
                 }
@@ -503,6 +504,8 @@
             }
 
             if (maxWidth <= 600) {
+                loginSection.style.transform = "translateX(100%)";
+                registerSection.style.transform = "translateX(0%)";
                 if (loginSection.style.transform == "translateX(100%)") {
                     loginSection.style.transform = "translateX(0%)";
                     registerSection.style.transform = "translateX(-100%)";
