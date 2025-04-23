@@ -586,6 +586,7 @@
 
         .footer-content {
             display: flex;
+            flex-direction: row;
             flex-wrap: wrap;
             justify-content: space-between;
             max-width: 1200px;
@@ -822,31 +823,31 @@
             .orders-table .btn-outline {
                 width: 100%;
             }
-        }
 
-        .orders-table td {
-            position: relative;
-        }
 
-        .orders-table td[data-label]::before {
-            content: attr(data-label);
-        }
+            .orders-table td {
+                position: relative;
+            }
 
-        .footer-content {
-            flex-direction: column;
-        }
+            .orders-table td[data-label]::before {
+                content: attr(data-label);
+            }
 
-        .footer-links {
-            margin-top: -10px;
-            height: 40dvh;
-            flex-direction: column;
-            justify-content: space-evenly;
-            gap: 0;
-        }
+            .footer-content {
+                flex-direction: column;
+            }
 
-        .links-column {
-            margin-top: -30px;
-        }
+            .footer-links {
+                margin-top: -10px;
+                height: 40dvh;
+                flex-direction: column;
+                justify-content: space-evenly;
+                gap: 0;
+            }
+
+            .links-column {
+                margin-top: -30px;
+            }
         }
     </style>
 </head>
