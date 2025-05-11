@@ -727,7 +727,8 @@ function removeItems() {
 }
 
 const MenuItems = document.getElementById('MenuItems');
-const screenWidth = screen.width;
+const screenWidth = window.innerWidth;
+
 
 if (screenWidth <= 600) {
     MenuItems.style.maxHeight = "0px";
@@ -768,8 +769,11 @@ function updateBothCarts(imgSrc, name, size, price) {
     if (error == false) {
         total = total + price;
         document.getElementById('popupTotal').innerHTML = total;
+        document.getElementById('popupTotal').style.color = '#4CAF50';
     } else {
         document.getElementById('popupTotal').innerHTML = "ERROR";
+        document.getElementById('popupTotal').style.color = 'red';
+
     }
 }
 

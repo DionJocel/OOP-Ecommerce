@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Profile</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 300px;
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            opacity: 0;
+            animation: cardEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center bottom;
+            will-change: box-shadow, filter;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .profiles {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .profile-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .profile-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .profile-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .profile-card:hover {
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 5px 15px rgba(0, 0, 0, 0.1);
+            filter: brightness(1.02);
+            z-index: 10;
+        }
+
+        .profile-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.9), transparent);
+        }
+
+        .profile-info {
+            padding: 1.5rem;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .profile-role {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .select-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .select-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .profile-card:nth-child(1) .profile-image {
+            background-color: #ff9e00;
+            background-image: url('dion.jpg');
+            background-position: 0 -37px;
+            background-repeat: no-repeat;
+        }
+
+        .profile-card:nth-child(2) .profile-image {
+            background-color: #00b4d8;
+            background-image: url('jerome.jfif');
+        }
+
+        .profile-card:nth-child(3) .profile-image {
+            background-color: #7209b7;
+            background-image: url('');
+        }
+
+        @media (max-width: 768px) {
+            .profiles {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Who's Currently Shopping?</h1>
+        <p class="subtitle">Select your profile to continue to your personalized dashboard.</p>
+
+        <div class="profiles">
+            <!-- Profile 1 -->
+            <div class="profile-card" onclick="selectProfile('DionJocelPTenorio')">
+                <div class="profile-image"></div>
+                <div class="profile-info">
+                    <h2 class="profile-name">Dion Jocel P. Tenorio</h2>
+                    <p class="profile-role">Administrator</p>
+                    <button class="select-btn">Select Profile</button>
+                </div>
+            </div>
+
+            <!-- Profile 2 -->
+            <div class="profile-card" onclick="selectProfile('MarcJeromeRArroyo')">
+                <div class="profile-image"></div>
+                <div class="profile-info">
+                    <h2 class="profile-name">Marc Jerome R. Arroyo</h2>
+                    <p class="profile-role">Content Manager</p>
+                    <button class="select-btn">Select Profile</button>
+                </div>
+            </div>
+
+            <!-- Profile 3 -->
+            <div class="profile-card" onclick="selectProfile('ChesterIhyvanDimafilis')">
+                <div class="profile-image"></div>
+                <div class="profile-info">
+                    <h2 class="profile-name">Chester Ihyvan Dimafilis</h2>
+                    <p class="profile-role">Marketing Specialist</p>
+                    <button class="select-btn">Select Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectProfile(name) {
+            alert(`Profile selected: ${name}. Redirecting to profile page...`);
+            window.location.href = '/user=' + encodeURIComponent(name) + '.html';
+        }
+    </script>
+</body>
+
+</html>

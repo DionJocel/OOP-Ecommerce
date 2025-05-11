@@ -161,30 +161,68 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.75);
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(2px);
         }
 
         .popup-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
             max-width: 800px;
             max-height: 80vh;
             overflow-y: auto;
             position: relative;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .close-popup {
             position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 28px;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
+            color: var(--primary-color);
             cursor: pointer;
+            transition: all 0.2s ease;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .close-popup:hover {
+            color: #ff4d4d;
+            transform: scale(1.1);
+        }
+
+        .popup-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .remove-cart {
+            transform: translateX(-50%);
         }
 
         .cart-icon {
@@ -193,6 +231,11 @@
             cursor: pointer;
             padding: 0;
             margin-top: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.05);
         }
 
         .cart-popup .cart-table {
@@ -200,41 +243,71 @@
             max-height: 50vh;
             overflow-y: auto;
             margin: 10px 0;
+            scrollbar-width: thin;
+            scrollbar-color: #e0e0e0 transparent;
         }
 
-        .cart-popup table {
+        table {
             width: 100%;
+            border-collapse: collapse;
         }
 
-        .cart-popup th,
-        .cart-popup td {
-            padding: 8px;
+        th,
+        td {
+            padding: 0.8rem;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #eee;
         }
 
-        .cart-popup th {
-            background-color: #f2f2f2;
+        th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        td img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
         }
 
         .cart-popup .purchase {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 15px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             margin-top: 10px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            bottom: 6%;
+            right: 7%;
+        }
+
+        .cart-popup .purchase:hover {
+            background-color: #43a047;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
         }
 
         .cart-popup .remove-cart {
             background-color: #f44336;
             color: white;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-bottom: 10px;
+            transition: all 0.2s ease;
+            position: absolute;
+            top: 10%;
+            right: 7%;
+        }
+
+        .cart-popup .remove-cart:hover {
+            background-color: #e53935;
         }
 
         .profile {
@@ -262,6 +335,7 @@
             padding: 3rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
         .products-area h2 {
@@ -271,6 +345,7 @@
             margin-bottom: 2.5rem;
             position: relative;
             color: var(--primary);
+            animation: fadeInUp 0.6s ease-out 0.2s both;
         }
 
         .products-container h2::after {
@@ -278,7 +353,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: rgb(0, 255, 115);
+            background: rgb(31, 30, 30);
             margin: 0.5rem auto 0;
         }
 
@@ -296,6 +371,40 @@
             transition: 0.5s ease;
             position: relative;
             cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .product-box:nth-child(1) {
+            animation-delay: 0.4s;
+        }
+
+        .product-box:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .product-box:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .product-box:nth-child(4) {
+            animation-delay: 0.7s;
+        }
+
+        .product-box:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .product-box:nth-child(6) {
+            animation-delay: 0.9s;
+        }
+
+        .product-box:nth-child(7) {
+            animation-delay: 1.0s;
+        }
+
+        .product-box:nth-child(8) {
+            animation-delay: 1.1s;
         }
 
         .product-box:hover {
@@ -339,7 +448,19 @@
             margin-top: 0.5rem;
         }
 
-        .product-popup {
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .prduct-popup {
             position: absolute;
             bottom: -50px;
             left: 0;
@@ -363,103 +484,6 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-        }
-
-        table,
-        thead,
-        th,
-        tr,
-        tbody,
-        td {
-            border: 1px solid rgba(0, 0, 0, 0.432);
-            border-collapse: collapse;
-        }
-
-        table {
-            width: 100%;
-            justify-self: center;
-        }
-
-        th {
-            font-size: 1.1rem;
-            font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 300;
-            font-style: normal;
-            padding: 8px;
-        }
-
-        td {
-            padding: 5px;
-            text-align: center;
-            font-size: 1rem;
-            font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 500;
-        }
-
-        td:nth-child(2) {
-            margin-left: 3px;
-            padding: 0;
-            display: flex;
-            width: 80px;
-            height: 80px;
-        }
-
-        td:nth-child(2) img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .cart-popup th:first-child,
-        .cart-popup td:first-child {
-            width: 50px;
-            text-align: center;
-        }
-
-        .cart-popup .item-checkbox {
-            transform: scale(1.3);
-            cursor: pointer;
-        }
-
-        button.remove-cart {
-            position: absolute;
-            right: 8%;
-            top: 9%;
-            border: 1px solid rgba(0, 0, 0, 0.37);
-            box-shadow: 2px 2px 4px rgb(0, 0, 0);
-            padding: 5px;
-            background: rgb(255, 0, 0);
-            color: white;
-            transition: 0.1s linear;
-        }
-
-        button.remove-cart:hover {
-            cursor: pointer;
-            box-shadow: 0px 0px 0px;
-        }
-
-        button.purchase {
-            position: absolute;
-            right: 5%;
-            bottom: 4%;
-            border: 1px solid rgba(0, 0, 0, 0.425);
-            border-radius: 20px;
-            font-size: 1.2rem;
-            font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 400;
-            font-style: normal;
-            padding: 8px;
-            background-color: lime;
-            box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.692);
-            transition: 0.2s ease;
-        }
-
-        button.purchase:hover {
-            cursor: pointer;
-            box-shadow: 0px 0px 0px;
         }
 
         .vibecity-footer {
@@ -775,12 +799,12 @@
                 <li><a href="vibecity.html#home">HOME</a></li>
                 <li><a href="vibecity.html#deals">FLASH DEALS</a></li>
                 <li><a href="products.html">PRODUCTS</a></li>
-                <li><a href="vibecity.html#about">ABOUT</a></li>
+                <li><a href="about.html">ABOUT</a></li>
             </ul>
         </nav>
         <div class="nav-right-section">
             <button class="cart-icon"><img src="shopping-bag.png" class="basket"></button>
-            <img src="profile.png" class="profile" onclick="window.location.href='profile.html';">
+            <img src="profile.png" class="profile" onclick="window.location.href='profile-selection.html';">
         </div>
         <i class="fa fa-bars" onclick="menutoggle()"></i>
     </header>
@@ -815,7 +839,7 @@
                 <input type="text" class="search-bar" placeholder="Search products ..." id="searchInput">
             </div>
             <div class="products-container" id="productsContainer">
-                <div class="product-box" data-name="marvel captain america t shirt full sleeves black tee"
+                <div class="product-box" data-name="marvel captain america tshirt full sleeves black tee"
                     data-material="cotton">
                     <div class="product-img" onclick="addCartCap()">
                         <img src="deal1.jpg" alt="Captain America T-Shirt">
@@ -828,7 +852,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="marvel iron man t shirt" data-material="polyester"
+                <div class="product-box" data-name="marvel iron man tshirt" data-material="polyester"
                     onclick="addCartIronman()">
                     <div class="product-img">
                         <img src="deal2.jpg" alt="Iron Man T-Shirt">
@@ -841,7 +865,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="marvel thor mjolnir black t shirt" data-material="cotton"
+                <div class="product-box" data-name="marvel thor mjolnir black tshirt" data-material="cotton"
                     onclick="addCartThor()">
                     <div class="product-img">
                         <img src="deal3.jpg" alt="Thor T-Shirt">
@@ -854,7 +878,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="marvel black widow t shirt" data-material="polyester"
+                <div class="product-box" data-name="marvel black widow tshirt" data-material="polyester"
                     onclick="addCartBW()">
                     <div class="product-img">
                         <img src="deal4.jpg" alt="Black Widow T-Shirt">
@@ -867,7 +891,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="marvel hawkeye black t shirt" data-material="cotton"
+                <div class="product-box" data-name="marvel hawkeye black tshirt" data-material="cotton"
                     onclick="addCartHawkeye()">
                     <div class="product-img">
                         <img src="deal5.jpg" alt="Hawkeye T-Shirt">
@@ -880,7 +904,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="marvel classic the incredible hulk white t shirt"
+                <div class="product-box" data-name="marvel incredible hulk white tshirt"
                     data-material="cotton" onclick="addCartHulk()">
                     <div class="product-img">
                         <img src="deal6.jpg" alt="Hulk T-Shirt">
@@ -893,7 +917,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="harry potter hogwarts design tee" data-material="cotton"
+                <div class="product-box" data-name="harry potter hogwarts tshirt" data-material="cotton"
                     onclick="addCartHogw()">
                     <div class="product-img">
                         <img src="hp.avif" alt="Hogwarts T-Shirt">
@@ -906,7 +930,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="marvel logo black tee" data-material="cotton"
+                <div class="product-box" data-name="marvel logo black" data-material="cotton"
                     onclick="addCartMarvel()">
                     <div class="product-img">
                         <img src="marvel.png" alt="Marvel Logo T-Shirt">
@@ -932,7 +956,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="plain black t shirt cotton" data-material="cotton"
+                <div class="product-box" data-name="plain black tshirt" data-material="cotton"
                     onclick="addCartPlainBlack()">
                     <div class="product-img">
                         <img src="plainblack.jpg" alt="Plain Black T-Shirt">
@@ -945,7 +969,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="plain white t shirt cotton" data-material="cotton"
+                <div class="product-box" data-name="plain white tshirt" data-material="cotton"
                     onclick="addCartPlainWhite()">
                     <div class="product-img">
                         <img src="plainwhite.avif" alt="Plain White T-Shirt">
@@ -958,7 +982,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="plain zine brown t shirt cotton" data-material="cotton"
+                <div class="product-box" data-name="plain zine brown tshirt" data-material="cotton"
                     onclick="addCartPlainBrown()">
                     <div class="product-img">
                         <img src="plainbrown.webp" alt="Plain Brown T-Shirt">
@@ -971,7 +995,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="plain beige t shirt cotton" data-material="cotton"
+                <div class="product-box" data-name="plain beige tshirt" data-material="cotton"
                     onclick="addCartPlainBeige()">
                     <div class="product-img">
                         <img src="plainbeige.avif" alt="Plain Beige T-Shirt">
@@ -984,7 +1008,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="plus button up drop shoulder cardigan" data-material="polyester"
+                <div class="product-box" data-name="plus buttonup drop shoulder cardigan" data-material="polyester"
                     onclick="addCartPinkCardigan()">
                     <div class="product-img">
                         <img src="pinkcardigan.jpg" alt="Pink Cardigan">
@@ -997,7 +1021,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="beige cardigan buttons crop cardigan" data-material="wool"
+                <div class="product-box" data-name="beige cardigan crop cardigan" data-material="wool"
                     onclick="addCartBeigeCardigan()">
                     <div class="product-img">
                         <img src="beigecardigan.webp" alt="Beige Cardigan">
@@ -1038,7 +1062,7 @@
                 </div>
 
                 <div class="product-box"
-                    data-name="ugmikdo women's polo shirt v-neck short-sleeved t-shirt solid color top"
+                    data-name="ugmikdo women's polo shirt v-neck short-sleeved"
                     data-material="cotton" onclick="addCartWhitePolo()">
                     <div class="product-img">
                         <img src="whitepolo.webp" alt="White Polo Shirt">
@@ -1096,7 +1120,7 @@
                         <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
                     </ul>
                     <ul>
-                        <li><a href="./vibecity.html#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> FAQs</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
                     </ul>

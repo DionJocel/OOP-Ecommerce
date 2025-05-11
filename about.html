@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | VibeCity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Audiowide&family=Codystar:wght@300;400&family=Indie+Flower&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Train+One&family=Turret+Road:wght@200;300;400;500;700;800&display=swap');
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f5f5f5;
+            --accent: #27548A;
+            --accent-light: #DDA853;
+            --accent-dark: #183B4E;
+            --text-light: #e0e0e0;
+            --text-dark: #333333;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: white;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: black;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            background-color: white;
+            z-index: 5;
+        }
+
+        header .logo-section img {
+            margin-left: -10px;
+            margin-top: 5px;
+            width: 65%;
+            height: 90%;
+            object-fit: cover;
+            filter: drop-shadow(1px 1px 2px white);
+        }
+
+        header .logo-section {
+            width: 30%;
+            height: 50px;
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header .logo-section h1 {
+            width: 100%;
+            font-size: 1.3rem;
+            color: white;
+            font-family: "Turret Road", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        nav {
+            width: 100%;
+        }
+
+        ul {
+            display: flex;
+            height: 50px;
+            align-items: center;
+            gap: 6%;
+            margin-left: 6%;
+        }
+
+        li {
+            display: inline-block;
+            list-style: none;
+        }
+
+        a {
+            position: relative;
+            text-decoration: none;
+            font-size: 15px;
+            color: black;
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        header a::after {
+            content: '';
+            background-color: black;
+            position: absolute;
+            bottom: -3px;
+            left: -5px;
+            height: 3px;
+            width: 0%;
+            border-radius: 20px;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+
+        a:hover::after {
+            width: 115%;
+        }
+
+        a.no-hover::after {
+            display: none;
+        }
+
+        .nav-right-section {
+            position: absolute;
+            display: flex;
+            right: 4%;
+            gap: 30%;
+        }
+
+        .basket {
+            width: 32px;
+            height: 32px;
+            transition: 0.4s ease;
+        }
+
+        .cart-icon {
+            border: none;
+            background-color: white;
+            margin-top: 8px;
+        }
+
+        .profile {
+            width: 40px;
+            height: 40px;
+            margin-top: 4px;
+            cursor: pointer;
+            transition: 0.4s ease;
+        }
+
+        .basket:hover,
+        .profile:hover {
+            transform: scale(1.1);
+        }
+
+        .fa-bars {
+            display: none;
+            font-size: 1.6rem;
+            right: 4%;
+            position: relative;
+            top: 20%;
+        }
+
+        .cart-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-popup:hover {
+            color: #ff4d4d;
+        }
+
+        .popup-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .remove-cart {
+            transform: translateX(-50%);
+        }
+
+        /* footer */
+        .vibecity-footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            color: #ffffff;
+            padding: 50px 0 0;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+
+        .logo-column {
+            width: 120px;
+            flex: 1.5;
+        }
+
+        .footer-logo-box {
+            width: 320px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo-box img {
+            width: 50%;
+            object-fit: cover;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .copyright {
+            color: #b3b3b3;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .contact-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            color: #b3b3b3;
+        }
+
+        .contact-list i {
+            margin-right: 10px;
+            color: #ffffff;
+            font-size: 16px;
+            margin-top: 3px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #b3b3b3;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            padding-left: 5px;
+        }
+
+        .footer-links i {
+            margin-right: 8px;
+            font-size: 10px;
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px 0;
+            text-align: center;
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+
+        .footer-bottom i {
+            color: #ff4d4d;
+            margin: 0 5px;
+        }
+
+        #btn-up {
+            border-radius: 10px;
+            opacity: 1;
+            position: fixed;
+            right: 2%;
+            top: 85%;
+            width: 40px;
+            background: #ffffff;
+            color: #000000;
+            text-align: center;
+            font-size: 24px;
+            padding: 5px;
+            border: 2px solid #000000;
+            justify-content: center;
+            padding-bottom: 7px;
+        }
+
+        /* hero-banner */
+        .hero-banner {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text-dark);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.6s;
+        }
+
+        .about-btn {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.9s;
+        }
+
+        .about-btn a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .about-btn a:hover {
+            background-color: var(--accent);
+            transform: translateY(5px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 100px 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .icon-divider {
+            width: 60px;
+            height: 60px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+
+        .icon-divider svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* About Section */
+        .about-content {
+            background-color: var(--accent);
+            color: white;
+            text-align: center;
+        }
+
+        /* Vision Section */
+        .vision-content {
+            background-color: var(--accent-dark);
+            color: white;
+            text-align: center;
+        }
+
+        /* Mission Section */
+        .mission-content {
+            background-color: var(--accent-light);
+            color: white;
+            text-align: center;
+        }
+
+        /* References */
+        .references-container {
+            background-color: #F5F5F5;
+            padding: 80px 50px;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .references-container h2 {
+            font-size: 3.5em;
+            font-weight: 800;
+            color: #2c2c2c;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .references-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF9A9E 0%, #FAD0C4 100%);
+            border-radius: 2px;
+        }
+
+        .references {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 4em;
+            gap: 20px;
+        }
+
+        .references a {
+            width: calc(20% - 20px);
+            margin: 10px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            background: white;
+        }
+
+        .references a:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .references a::before {
+            content: 'Link Here!';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 12px 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-weight: 600;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .references a:hover::before {
+            transform: translateY(0);
+        }
+
+        .references img {
+            width: 100%;
+            height: 200px;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .references a:hover img {
+            transform: scale(1.1);
+        }
+
+
+        /* Footer */
+        .vibecity-footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            color: #ffffff;
+            padding: 50px 0 0;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+
+        .logo-column {
+            width: 120px;
+            flex: 1.5;
+        }
+
+        .footer-logo-box {
+            width: 320px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo-box img {
+            width: 50%;
+            object-fit: cover;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .copyright {
+            color: #b3b3b3;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #ffffff;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .contact-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            color: #b3b3b3;
+        }
+
+        .contact-list i {
+            margin-right: 10px;
+            color: #ffffff;
+            font-size: 16px;
+            margin-top: 3px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #b3b3b3;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            padding-left: 5px;
+        }
+
+        .footer-links i {
+            margin-right: 8px;
+            font-size: 10px;
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px 0;
+            text-align: center;
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+
+        .footer-bottom i {
+            color: #ff4d4d;
+            margin: 0 5px;
+        }
+
+        /* Back to top button */
+        #btn-up {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+        }
+
+        #btn-up.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #btn-up:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .content-section {
+                padding: 80px 8%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                height: 70px;
+                padding: 0 5%;
+            }
+
+            ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-right-section {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .fa-bars {
+                display: block;
+                margin-left: auto;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .content-section h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                width: 100%;
+                overflow: hidden;
+                padding: 0;
+            }
+
+            header .logo-section {
+                width: 60%;
+                height: 100%;
+            }
+
+            header .logo-section h1 {
+                font-size: 0.9rem;
+            }
+
+            nav {
+                width: 40%;
+                display: flex;
+                flex-direction: row;
+            }
+
+            header nav ul {
+                background-color: black;
+                display: flex;
+                flex-direction: row;
+                position: fixed;
+                justify-content: center;
+                z-index: 3;
+                right: 0;
+                top: 70px;
+                overflow: hidden;
+                width: 100%;
+                max-height: 0px;
+                transition: max-height 0.9s;
+            }
+
+            header ul li {
+                display: flex;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+                color: white;
+            }
+
+            nav a:hover::after {
+                background: white;
+            }
+
+            .nav-right-section {
+                right: 18%;
+            }
+
+            .basket {
+                margin-top: -6px;
+            }
+
+            .profile {
+                width: 35px;
+                height: 35px;
+                margin-top: 0px;
+            }
+
+            .fa-bars {
+                display: block;
+                top: 35%;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .content-section {
+                padding: 60px 5%;
+            }
+
+            .content-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .references {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                margin-top: -50px;
+                height: 40dvh;
+                flex-direction: column;
+                justify-content: space-around;
+                gap: 0;
+            }
+
+            .links-column {
+                margin-top: 65px;
+            }
+
+            .popup-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .references-container {
+                padding: 80px 10px;
+            }
+
+            .references a {
+                width: calc(45% - 20px);
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-section">
+            <img src="logo-transparent.png" alt="Vibe City Logo">
+            <h1> Vibe City Clothing </h1>
+        </div>
+        <nav>
+            <ul id="MenuItems">
+                <li><a href="vibecity.html#home">HOME</a></li>
+                <li><a href="vibecity.html#deals">FLASH DEALS</a></li>
+                <li><a href="products.html">PRODUCTS</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right-section">
+            <button class="cart-icon"><img src="shopping-bag.png" class="basket"></button>
+            <img src="profile.png" class="profile" onclick="window.location.href='profile-selection.html';">
+        </div>
+        <i class="fa fa-bars" onclick="menutoggle()"></i>
+    </header>
+    <div class="cart-popup" id="cartPopup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h2>Your Cart</h2>
+            <button class="remove-cart" onclick="removeItems()">Remove all</button>
+            <div class="cart-table">
+                <table id="cartPopupTable">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Product</th>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartPopupItems"></tbody>
+                </table>
+            </div>
+            <h3>Total Amount: ₱<span id="popupTotal">0</span></h3>
+            <button class="purchase" onclick="purchase()">Place Order</button>
+        </div>
+    </div>
+    <!-- Hero-banner -->
+    <section class="hero-banner">
+        <h1 class="hero-title">About Us | Vibe City</h1>
+        <p class="hero-subtitle">Discover the story behind our brand and what makes us unique</p>
+        <div class="about-btn">
+            <a href="#about">&darr;</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="content-section about-content" id="about">
+        <h2>Welcome to Vibe City</h2>
+        <p>At Vibe City, we believe that fashion is more than just clothing — it's a lifestyle, an expression, and a
+            statement. Whether you're into streetwear, casual fits, or bold statement pieces, we've got the styles that
+            match your energy.</p>
+        <p>Our collection is carefully curated to help you look fresh, feel confident, and stand out in every scene.
+            Step into your vibe. Step into Vibe City.</p>
+
+        <div class="icon-divider">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor"
+                    d="M22.033 21.18L13.77.459H7.869l1.049 2.623L1.836 21.18C1.574 22.098.787 22.23 0 22.361v1.18h6.82v-1.18C4.984 22.23 3.934 21.967 4.721 20c.131-.131.656-1.574 1.311-3.41h8.393l1.18 3.016c.131.525.262.918.262 1.311 0 1.049-.918 1.443-2.623 1.443v1.18H24v-1.18c-.918-.13-1.705-.393-1.967-1.18zM6.82 14.361a363.303 363.303 0 0 0 3.279-8.525l3.41 8.525H6.82z" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="content-section vision-content">
+        <h2>Our Vision</h2>
+        <p>Vibe City envisions a world where fashion is fearless, expressive, and accessible to all. We aim to inspire
+            individuality and confidence through bold, trend-setting styles.</p>
+        <p>Our goal is to lead a global community that wears their vibe loud and proud.</p>
+
+        <div class="icon-divider">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor"
+                    d="m9.3836 23.9993-.5152-21.859q-2.2504.8435-3.5153 2.64-1.2509 1.7971-1.2509 4.4689 0 .6092.0629 1.0002.0776.3748.156.6092.0783.2188.1411.3438.0777.1249.0777.2188-.828 0-1.4682-.156-.641-.1723-1.0786-.5316-.4222-.3585-.6565-.9529-.2188-.593-.2188-1.4682 0-1.0624.4524-2.0937.4687-1.0306 1.2657-1.9532.8125-.9211 1.891-1.7025 1.0942-.7815 2.328-1.344Q8.3044.6409 9.6484.3289 11.0079 0 12.3519 0q.3593 0 .6565.0155.312.0156.624.0466l.2816 19.687L20.6481.1554h2.2341L13.9924 24H9.3829Z" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="content-section mission-content">
+        <h2>Our Mission</h2>
+        <p>At Vibe City, our mission is to deliver fresh, high-quality fashion that resonates with modern culture and
+            personal expression.</p>
+        <p>We empower our customers to stand out by curating unique collections that reflect diverse styles and vibes.
+            Through innovation, inclusivity, and authenticity, we strive to redefine everyday fashion.</p>
+
+        <div class="icon-divider">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor"
+                    d="M22.141 16.488c-.53 0-.824-.353-.824-1.147 0-.795.49-4.182.68-5.736.35-2.885-1.313-4.976-3.725-4.976-1.912 0-3.37.756-4.514 1.973-.776-1.173-1.648-1.973-3.343-1.973-1.652 0-2.676.605-3.684 1.574C6.189 5.138 5.222 4.63 3.777 4.63 2.578 4.629.967 5.23 0 5.825l1.077 2.44c.734-.409 1.336-.718 1.853-.718.566 0 .902.408.808 1.262-.09.824-1.09 10.268-1.09 10.268H5.9s.638-6.061.863-7.885c.264-2.137 1.299-3.49 2.774-3.49 1.294 0 1.735 1.018 1.642 2.21-.08 1.037-1.025 9.165-1.025 9.165h3.27s.72-6.738.946-8.408c.293-2.17 1.692-2.967 2.57-2.967 1.443 0 1.882 1.18 1.747 2.299-.11.91-.5 4.118-.62 5.782-.147 2.058.824 3.589 2.663 3.589 1.206 0 2.412-.344 3.27-.835l-.703-2.413c-.41.177-.797.364-1.155.364" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Reference -->
+    <div class="references-container">
+        <h2>References</h2>
+        <div class="references">
+
+            <a href="https://www.pinterest.com/pin/96616354485986582/"><img src="hero-img.png"
+                    alt="Harry Potter Potthead Shirt">Link Here!</a>
+
+            <a href="https://www.marvel.com/articles/gear/marvel-design-vault-exclusive-tshirt-club"><img
+                    src="marvel.png" alt="Marvel Shirt">Link Here!</a>
+
+            <!-- <a href="https://www.etsy.com/listing/231925760/">Link Here!</a> -->
+
+            <a href="https://pngtree.com/freebackground/collection-of-3d-illustrated-t-shirts_13301681.html"><img
+                    src="shirts2.jpg">Link Here!</a>
+
+            <a
+                href="https://www.wallpaperflare.com/tshirts-photo-fashion-mens-fashion-clothes-t-shirts-planning-wallpaper-aanko"><img
+                    src="shirts.jpg" alt="Shirts"> Link Here!</a>
+
+            <a href="https://www.pinterest.com/pin/770256342493458012/"><img src="deal1.jpg"
+                    alt="Captain America Shirt"> Here!</a>
+
+            <a href="https://www.pinterest.com/pin/352195633360266022/"><img src="deal2.jpg" alt="Ironman Shirt">Link
+                Here!</a>
+
+            <a href="https://godfathershirts.com/product/thor-mjolnir-shirt/"><img src="deal3.jpg"
+                    alt="Mjolnir Shirt">Link Here!</a>
+
+            <a href="https://www.pinterest.com/pin/615022892840661823/"><img src="deal4.jpg"
+                    alt="Black Widow Shirt">Link Here!</a>
+
+            <a href="https://mmv2api.s3-us-east-2.amazonaws.com/products/images/HWKT01.jpg"><img src="deal5.jpg"
+                    alt="Hawkeye Shirt">Link Here!</a>
+
+            <a href="https://www.etsy.com/listing/1641892708/marvel-classic-the-incredible-hulk"><img src="deal6.jpg"
+                    alt="Classic Hulk Shirt">Link Here!</a>
+
+            <a href="https://www.pinterest.com/pin/589338301215539101/"><img src="hpalways.jpg"
+                    alt="Harry Potter Shirt">Link Here!</a>
+
+            <a href="https://www.carousell.ph/p/plain-black-t-shirt-1209694873/"><img src="plainblack.jpg"
+                    alt="Black Shirt">Link Here!</a>
+
+            <a href="https://www.etsy.com/ca/listing/786341965/blank-white-t-shirt-mockup"><img src="plainwhite.avif"
+                    alt="White Shirt">Link Here!</a>
+
+            <a href="https://www.zumiez.com/zine-brown-t-shirt.html"><img src="plainbrown.webp" alt="Brown Shirt"> Link
+                Here!</a>
+
+            <a href="https://www.freepik.com/premium-ai-image/blank-beige-tshirt-mockup-template_55115553.html"><img
+                    src="plainbeige.avif" alt="Beige Shirt">Link Here!</a>
+
+            <a href="https://www.pinterest.com/pin/919226973915554464/"><img src="pinkcardigan.jpg"
+                    alt="Pink Cardigan">Link Here!</a>
+
+            <!-- <a href="https://www.etsy.com/listing/945282173/">Link Here!</a> -->
+
+            <a
+                href="https://shopee.ph/-M-5XL-Plus-Size-Flannel-Fabric-Korean-Style-Long-Sleeve-Plain-T-Shirt-Handsome-Tops-Men's-Turtleneck-Pullover-Top-Fashion-High-neck-Loose-Tshirt-i.1017348295.22089381896?sp_atk=611804eb-88e3-45af-aec2-f839f33c34cc&xptdk=611804eb-88e3-45af-aec2-f839f33c34cc"><img
+                    src="whiteturtleneck.webp" alt="Turtle Neck Shirt">Link Here!</a>
+
+            <a
+                href="https://shopee.ph/Half-Turtleneck-Sweater-Women-Autumn-Winter-New-Style-Slim-fit-Slimmer-Look-i.196214868.27208555895?sp_atk=d3e890da-a4f2-4c3c-85e3-57c56c68455d&xptdk=d3e890da-a4f2-4c3c-85e3-57c56c68455d"><img
+                    src="blackturtleneck.webp" alt="Black Turtle Neck">Link Here!</a>
+
+            <a
+                href="https://shopee.ph/Ugmikdo-Women's-POLO-Shirt-V-Neck-Short-Sleeved-T-Shirt-Solid-Color-top-i.893608767.23046863161?sp_atk=08cb036d-79d2-49bf-950b-722929bcd09c&xptdk=08cb036d-79d2-49bf-950b-722929bcd09c"><img
+                    src="whitepolo.webp" alt="White Polo">Link Here!</a>
+
+            <a
+                href="https://www.vecteezy.com/photo/11911023-full-street-fashion-slender-figure-beautiful-face-graceful-girl-sitting-on-isolated-white-background-portrait-of-female-model-in-studio-plastic-surgery-and-aesthetic-cosmetology"><img
+                    src="carousel-1.jpg" alt="Carousel">Link Here!</a>
+
+            <a href="https://www.pinterest.com/pin/496803402633287915/"><img src="carousel-2.jpg" alt="Carousel-2">Link
+                Here!</a>
+
+            <a href="https://www.pinterest.ca/pin/792070653217486496/"><img src="carousel-3.jpg" alt="Carousel-3">Link
+                Here!</a>
+
+            <a href="https://fity.club/lists/suggestions/posing-models/"><img src="carousel-4.jpg" alt="Carousel-4">Link
+                Here!</a>
+
+            <a href="https://wallpapercave.com/men-clothes-wallpapers"><img src="carousel-5.jpg" alt="Carousel-5">Link
+                Here!</a>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- Bottom -->
+    <footer class="vibecity-footer">
+        <div class="footer-content">
+            <div class="footer-column logo-column">
+                <div class="footer-logo-box">
+                    <img src="logo-transparent.png" alt="Vibe City Clothing Logo">
+                    <h2 class="brand-name">Vibe City Clothing</h2>
+                    <p class="copyright">&copy; 2025 All Rights Reserved</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-column contact-column">
+                <h3 class="footer-title">Contact Us</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>1234 Longos, Malolos, Bulacan</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>vibecityclothing@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(63)987-654-3210</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-column links-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="vibecity.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#deals"><i class="fas fa-chevron-right"></i> Flash Deals</a></li>
+                        <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQs</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p> Vibecity Official </p>
+        </div>
+
+
+    </footer>
+
+    <!-- Buttones PAmpa-taas -->
+    <a href="#top" id="btn-up">&uarr;</a>
+
+
+    <!-- js -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let btn = document.getElementById("btn-up");
+
+            btn.style.opacity = "0";
+            btn.style.visibility = "hidden";
+
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 300) {
+                    btn.style.opacity = "1";
+                    btn.style.visibility = "visible";
+                } else {
+                    btn.style.opacity = "0";
+                    btn.style.visibility = "hidden";
+                }
+            });
+        });
+        const MenuItems = document.getElementById('MenuItems');
+        const screenWidth = window.innerWidth;
+
+        if (screenWidth <= 600) {
+            MenuItems.style.maxHeight = "0px";
+        }
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            }
+            else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -98,7 +98,7 @@
 
         .fa-eye-slash {
             position: absolute;
-            top: 44%;
+            top: 40%;
             right: 10%;
             color: rgba(0, 0, 0, 0.61);
             cursor: pointer;
@@ -111,7 +111,7 @@
 
         p {
             position: absolute;
-            top: 50%;
+            top: 46%;
             left: 10%;
             font-size: 0.9rem;
             color: gray;
@@ -486,11 +486,11 @@
                 return false;
             }
         }
-
+        
         const img = document.getElementById('img');
         const loginSection = document.getElementById('loginSection');
         const registerSection = document.getElementById('registerSection');
-        const maxWidth = screen.width;
+        const maxWidth = window.innerWidth;
         if(maxWidth > 600) {
             img.style.transform = "translateX(100%)";
         }
@@ -500,7 +500,8 @@
         }
 
         function moveImg() {
-            if (maxWidth > 600) {
+            const currentWidth = window.innerWidth;
+            if (currentWidth > 600) {
                 if (img.style.transform == "translateX(100%)") {
                     img.style.transform = "translateX(0%)";
                 }
@@ -509,7 +510,7 @@
                 }
             }
 
-            if (maxWidth <= 600) {
+            if (currentWidth <= 600) {
                 if (loginSection.style.transform == "translateX(100%)") {
                     loginSection.style.transform = "translateX(0%)";
                     registerSection.style.transform = "translateX(-100%)";
