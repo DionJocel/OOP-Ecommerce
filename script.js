@@ -774,7 +774,6 @@ function purchase() {
 }
 const MenuItems = document.getElementById('MenuItems');
 const screenWidth = screen.width;
-MenuItems.style.maxHeight = "0px";
 
 if (screenWidth <= 600) {
     MenuItems.style.maxHeight = "0px";
