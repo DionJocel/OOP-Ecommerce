@@ -250,7 +250,7 @@
         @media screen and (max-width: 600px) {
 
             .login-img {
-                transform: translate(0);
+                transform: translateX(0%);
                 width: 100%;
                 height: 100%;
                 z-index: 1;
@@ -491,17 +491,20 @@
         const loginSection = document.getElementById('loginSection');
         const registerSection = document.getElementById('registerSection');
         const maxWidth = window.innerWidth;
-        if(maxWidth > 600) {
+        const maxWidth2 = screen.width;
+        if(maxWidth > 600 || maxWidth2 > 600) {
             img.style.transform = "translateX(100%)";
         }
-        if(maxWidth <= 600) {
+        if(maxWidth <= 600 || maxWidth2 <= 600) {
+            img.style.transform = "translateX(0%)";
             loginSection.style.transform = "translateX(0%)";
             registerSection.style.transform = "translateX(-100%)";
         }
 
         function moveImg() {
             const currentWidth = window.innerWidth;
-            if (currentWidth > 600) {
+            const currentWidth2 = screen.width;
+            if (currentWidth > 600 || currentWidth2 > 600) {
                 if (img.style.transform == "translateX(100%)") {
                     img.style.transform = "translateX(0%)";
                 }
@@ -510,7 +513,7 @@
                 }
             }
 
-            if (currentWidth <= 600) {
+            if (currentWidth <= 600 || currentWidth2 <= 600) {
                 if (loginSection.style.transform == "translateX(100%)") {
                     loginSection.style.transform = "translateX(0%)";
                     registerSection.style.transform = "translateX(-100%)";
