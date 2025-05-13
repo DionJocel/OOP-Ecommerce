@@ -251,7 +251,6 @@ a.no-hover::after {
     width: 45%;
     padding: 0 5%;
     align-items: flex-start;
-    animation: fadeLeft 1s ease-out;
 }
 
 .column-1 h1 {
@@ -261,6 +260,9 @@ a.no-hover::after {
     line-height: 1.2;
     margin-bottom: 1.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: fadeLeft 0.8s ease-out forwards;
+    animation-delay: 0.5s;
 }
 
 .column-1 h2 {
@@ -269,6 +271,9 @@ a.no-hover::after {
     font-weight: 400;
     margin-bottom: 2rem;
     opacity: 0.9;
+    opacity: 0;
+    animation: fadeLeft 0.8s ease-out forwards;
+    animation-delay: 0.8s;
 }
 
 .column-1 h3 {
@@ -280,6 +285,9 @@ a.no-hover::after {
     font-weight: 500;
     margin-bottom: 2rem;
     transition: var(--transition);
+    opacity: 0;
+    animation: fadeLeft 0.8s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
 .column-1 h3:hover {
@@ -301,6 +309,9 @@ a.no-hover::after {
     cursor: pointer;
     transition: var(--transition);
     box-shadow: var(--shadow);
+    opacity: 0;
+    animation: fadeLeft 0.8s ease-out forwards;
+    animation-delay: 1.2s;
 }
 
 .hero-button a {
@@ -320,7 +331,9 @@ a.no-hover::after {
 .column-2 {
     width: 55%;
     align-items: center;
-    animation: fadeRight 1s ease-out;
+    opacity: 0;
+    animation: fadeRight 0.8s ease-out forwards;
+    animation-delay: 1.6s;
 }
 
 .shirt-box {
