@@ -102,7 +102,6 @@
             align-items: center;
             gap: 6%;
             margin-left: 6%;
-
         }
 
         li {
@@ -152,6 +151,31 @@
         .basket {
             width: 32px;
             height: 32px;
+            transition: 0.4s ease;
+        }
+
+        .cart-icon {
+            position: relative;
+            border: none;
+            background-color: white;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
         }
 
         .cart-popup {
@@ -159,6 +183,8 @@
             position: fixed;
             top: 0;
             left: 0;
+            justify-self: center;
+            align-self: center;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.75);
@@ -166,6 +192,10 @@
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(2px);
+        }
+
+        #cartPopup {
+            display: none;
         }
 
         .popup-content {
@@ -223,15 +253,6 @@
 
         .remove-cart {
             transform: translateX(-50%);
-        }
-
-        .cart-icon {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            margin-top: 10px;
-            transition: transform 0.2s ease;
         }
 
         .cart-icon:hover {
@@ -308,6 +329,12 @@
 
         .cart-popup .remove-cart:hover {
             background-color: #e53935;
+        }
+
+        .item-selector {
+            transform: scale(1.3);
+            cursor: pointer;
+            accent-color: #85E89D;
         }
 
         .profile {
@@ -683,6 +710,21 @@
             color: #aaa;
         }
 
+        .delete-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .delete-btn:hover {
+            background-color: #e60000;
+        }
+
         @media (max-width: 600px) {
             header {
                 width: 100%;
@@ -702,25 +744,34 @@
             }
 
             header ul {
-                background-color: black;
+                background: linear-gradient(90deg, rgba(0, 0, 0, 0.806), rgba(0, 0, 0, 0.363));
                 position: fixed;
-                justify-content: center;
-                z-index: 3;
+                justify-content: start;
+                z-index: 5;
                 right: 0;
-                top: 50px;
+                top: 49px;
                 overflow: hidden;
                 width: 100%;
-                max-height: 0px;
-                transition: max-height 0.9s;
+                height: 100%;
+                flex-direction: column;
+                align-items: start;
+                padding: 20% 11%;
+                opacity: 0;
+                pointer-events: none;
+                transition: 0.3s ease;
+                gap: 8%;
             }
 
-            header ul li {
-                display: block;
+            header ul.show {
+                opacity: 1;
+                pointer-events: auto;
             }
 
             nav a {
-                font-size: 0.8rem;
-                color: white;
+                letter-spacing: 0.3rem;
+                font-weight: 500;
+                font-size: 2rem;
+                color: rgb(255, 255, 255);
             }
 
             nav a:hover::after {
@@ -763,7 +814,7 @@
             }
 
             .links-column {
-                margin-top: 30px;
+                margin-top: 70px;
             }
         }
 
@@ -803,7 +854,10 @@
             </ul>
         </nav>
         <div class="nav-right-section">
-            <button class="cart-icon"><img src="shopping-bag.png" class="basket"></button>
+            <button class="cart-icon" onclick="toggleCartPopup()">
+                <img src="shopping-bag.png" class="basket">
+                <span class="cart-count">0</span>
+            </button>
             <img src="profile.png" class="profile" onclick="window.location.href='profile-selection.html';">
         </div>
         <i class="fa fa-bars" onclick="menutoggle()"></i>
@@ -822,6 +876,7 @@
                             <th>Name</th>
                             <th>Size</th>
                             <th>Price</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="cartPopupItems"></tbody>
@@ -904,8 +959,8 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="marvel incredible hulk white tshirt"
-                    data-material="cotton" onclick="addCartHulk()">
+                <div class="product-box" data-name="marvel incredible hulk white tshirt" data-material="cotton"
+                    onclick="addCartHulk()">
                     <div class="product-img">
                         <img src="deal6.jpg" alt="Hulk T-Shirt">
                     </div>
@@ -930,8 +985,7 @@
                     </div>
                 </div>
 
-                <div class="product-box" data-name="marvel logo black" data-material="cotton"
-                    onclick="addCartMarvel()">
+                <div class="product-box" data-name="marvel logo black" data-material="cotton" onclick="addCartMarvel()">
                     <div class="product-img">
                         <img src="marvel.png" alt="Marvel Logo T-Shirt">
                     </div>
@@ -1061,8 +1115,7 @@
                     </div>
                 </div>
 
-                <div class="product-box"
-                    data-name="ugmikdo women's polo shirt v-neck short-sleeved"
+                <div class="product-box" data-name="ugmikdo women's polo shirt v-neck short-sleeved"
                     data-material="cotton" onclick="addCartWhitePolo()">
                     <div class="product-img">
                         <img src="whitepolo.webp" alt="White Polo Shirt">
@@ -1132,7 +1185,48 @@
             <p> Vibecity Official </p>
         </div>
     </footer>
-    <script src="productscript.js"></script>
+    <div class="cart-column" style="display: none;">
+        <h2> Your Cart </h2>
+        <button class="remove-cart" onclick="removeItems()"> Remove all </button>
+        <div class="cart-table">
+            <table id="cart">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Size</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="cartItems"></tbody>
+            </table>
+        </div>
+        <h3> Total Amount: ₱<span id="total"></span></h3>
+        <button class="purchase" onclick="purchase()"> Place Order</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadCartFromStorage();
+            updateCartCount();
+        });
+        function toggleCartPopup() {
+            document.querySelector('.cart-icon').addEventListener('click', function () {
+                document.getElementById('cartPopup').style.display = 'flex';
+                loadCartFromStorage();
+            });
+            document.querySelector('.close-popup').addEventListener('click', function () {
+                document.getElementById('cartPopup').style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == document.getElementById('cartPopup')) {
+                    document.getElementById('cartPopup').style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

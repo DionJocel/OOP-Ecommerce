@@ -133,7 +133,6 @@ ul {
     align-items: center;
     gap: 6%;
     margin-left: 6%;
-
 }
 
 li {
@@ -184,13 +183,31 @@ a.no-hover::after {
     width: 32px;
     height: 32px;
     transition: 0.4s ease;
+    position: relative;
 }
 
 .cart-icon {
+    position: relative;
     border: none;
     background-color: white;
     margin-top: 8px;
     cursor: pointer;
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #e63946;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .profile {
@@ -794,6 +811,27 @@ td img {
     transform: translateY(-2px);
 }
 
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.delete-btn:hover {
+    background-color: #e60000;
+}
+
+.item-selector {
+    transform: scale(1.3);
+    cursor: pointer;
+    accent-color: #85E89D;
+}
+
 /* About Section */
 .about-section {
     width: 100%;
@@ -916,6 +954,10 @@ td img {
     z-index: 1000;
     justify-content: center;
     align-items: center;
+}
+
+#cartPopup {
+    display: none;
 }
 
 .popup-content {
@@ -1291,25 +1333,34 @@ td img {
     }
 
     header ul {
-        background-color: black;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.806), rgba(0, 0, 0, 0.363));
         position: fixed;
-        justify-content: center;
-        z-index: 3;
+        justify-content: start;
+        z-index: 5;
         right: 0;
-        top: 50px;
+        top: 49px;
         overflow: hidden;
         width: 100%;
-        max-height: 0px;
-        transition: max-height 0.9s;
+        height: 100%;
+        flex-direction: column;
+        align-items: start;
+        padding: 20% 11%;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s ease;
+        gap: 8%;
     }
 
-    header ul li {
-        display: block;
+    header ul.show {
+        opacity: 1;
+        pointer-events: auto;
     }
 
     nav a {
-        font-size: 0.8rem;
-        color: white;
+        letter-spacing: 0.3rem;
+        font-weight: 500;
+        font-size: 2rem;
+        color: rgb(255, 255, 255);
     }
 
     nav a:hover::after {
@@ -1432,7 +1483,7 @@ td img {
     }
 
     .footer-links {
-        margin-top: -50px;
+        margin-top: -70px;
         height: 40dvh;
         flex-direction: column;
         justify-content: space-evenly;
@@ -1440,7 +1491,7 @@ td img {
     }
 
     .links-column {
-        margin-top: 30px;
+        margin-top: 70px;
     }
 
     .popup-content {

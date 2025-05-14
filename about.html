@@ -916,16 +916,6 @@
         }
 
         @media (max-width: 768px) {
-            header {
-                height: 70px;
-                padding: 0 5%;
-            }
-
-            ul {
-                flex-direction: column;
-                gap: 20px;
-            }
-
             .nav-right-section {
                 margin-left: 0;
                 margin-top: 20px;
@@ -974,32 +964,37 @@
 
             nav {
                 width: 40%;
-                display: flex;
-                flex-direction: row;
             }
 
-            header nav ul {
-                background-color: black;
-                display: flex;
-                flex-direction: row;
+            header ul {
+                background: linear-gradient(90deg, rgba(0, 0, 0, 0.806), rgba(0, 0, 0, 0.363));
                 position: fixed;
-                justify-content: center;
-                z-index: 3;
+                justify-content: start;
+                z-index: 5;
                 right: 0;
-                top: 70px;
+                top: 49px;
                 overflow: hidden;
                 width: 100%;
-                max-height: 0px;
-                transition: max-height 0.9s;
+                height: 100%;
+                flex-direction: column;
+                align-items: start;
+                padding: 20% 11%;
+                opacity: 0;
+                pointer-events: none;
+                transition: 0.3s ease;
+                gap: 8%;
             }
 
-            header ul li {
-                display: flex;
+            header ul.show {
+                opacity: 1;
+                pointer-events: auto;
             }
 
             nav a {
-                font-size: 0.8rem;
-                color: white;
+                letter-spacing: 0.3rem;
+                font-weight: 500;
+                font-size: 2rem;
+                color: rgb(255, 255, 255);
             }
 
             nav a:hover::after {
@@ -1011,18 +1006,18 @@
             }
 
             .basket {
-                margin-top: -6px;
+                margin-top: -30px;
             }
 
             .profile {
                 width: 35px;
                 height: 35px;
-                margin-top: 0px;
+                margin-top: -15px;
             }
 
             .fa-bars {
                 display: block;
-                top: 35%;
+                top: 20%;
             }
 
             .hero-title {
@@ -1049,7 +1044,7 @@
                 margin-top: -50px;
                 height: 40dvh;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: space-evenly;
                 gap: 0;
             }
 
@@ -1352,19 +1347,20 @@
             });
         });
         const MenuItems = document.getElementById('MenuItems');
-        const screenWidth = window.innerWidth;
+        const screenWidth = screen.width;
 
-        if (screenWidth <= 600) {
-            MenuItems.style.maxHeight = "0px";
-        }
         function menutoggle() {
-            if (MenuItems.style.maxHeight == "0px") {
-                MenuItems.style.maxHeight = "200px";
+            MenuItems.classList.toggle('show');
+            if (MenuItems.style.opacity == "0") {
+                MenuItems.style.opacity = "1";
+                MenuItems.style.pointerEvents = "auto";
             }
             else {
-                MenuItems.style.maxHeight = "0px";
+                MenuItems.style.opacity = "0";
+                MenuItems.style.pointerEvents = "none";
             }
         }
+
     </script>
 </body>
 

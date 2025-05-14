@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <title> Vibe City Clothing </title>
 </head>
+
 <body id="home">
     <header>
         <div class="logo-section">
@@ -23,7 +25,10 @@
             </ul>
         </nav>
         <div class="nav-right-section">
-            <button class="cart-icon"><img src="shopping-bag.png" class="basket"></button>
+            <button class="cart-icon" onclick="toggleCartPopup()">
+                <img src="shopping-bag.png" class="basket">
+                <span class="cart-count">0</span>
+            </button>
             <img src="profile.png" class="profile" onclick="window.location.href='profile-selection.html';">
         </div>
         <i class="fa fa-bars" onclick="menutoggle()"></i>
@@ -37,10 +42,12 @@
                 <table id="cartPopupTable">
                     <thead>
                         <tr>
+                            <th>Select</th>
                             <th>Product</th>
                             <th>Name</th>
                             <th>Size</th>
                             <th>Price</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="cartPopupItems"></tbody>
@@ -220,7 +227,8 @@
                             <img src="deal6.jpg" id="img">
                         </div>
                         <div class="product-info">
-                            <h2 id="name"> Marvel CLassic The Incredible Hulk White T Shirt <span id="price">₱640</span> </h2>
+                            <h2 id="name"> Marvel CLassic The Incredible Hulk White T Shirt <span id="price">₱640</span>
+                            </h2>
                         </div>
                         <div class="product-popup">
                             <h3> Add to Cart </h3>
@@ -253,7 +261,8 @@
                             <img src="hpalways.jpg" id="img">
                         </div>
                         <div class="product-info">
-                            <h2 id="name"> Harry Potter Deathly Hallows Inspired TShirt <span id="price">₱470</span> </h2>
+                            <h2 id="name"> Harry Potter Deathly Hallows Inspired TShirt <span id="price">₱470</span>
+                            </h2>
                         </div>
                         <div class="product-popup">
                             <h3> Add to Cart </h3>
@@ -330,7 +339,8 @@
                             <img src="whiteturtleneck.webp" id="img">
                         </div>
                         <div class="product-info">
-                            <h2 id="name"> Flannel Fabric Korean Style Long Sleeve Plain Turtleneck Pullover Top <span id="price">₱120</span> </h2>
+                            <h2 id="name"> Flannel Fabric Korean Style Long Sleeve Plain Turtleneck Pullover Top <span
+                                    id="price">₱120</span> </h2>
                         </div>
                         <div class="product-popup">
                             <h3> Add to Cart </h3>
@@ -341,7 +351,8 @@
                             <img src="blackturtleneck.webp" id="img">
                         </div>
                         <div class="product-info">
-                            <h2 id="name"> Half Turtleneck Sweater Women Slim-fit Black <span id="price">₱170</span> </h2>
+                            <h2 id="name"> Half Turtleneck Sweater Women Slim-fit Black <span id="price">₱170</span>
+                            </h2>
                         </div>
                         <div class="product-popup">
                             <h3> Add to Cart </h3>
@@ -352,7 +363,8 @@
                             <img src="whitepolo.webp" id="img">
                         </div>
                         <div class="product-info">
-                            <h2 id="name"> Ugmikdo Women's POLO Shirt V-Neck Short-Sleeved T-Shirt Solid Color top <span id="price">₱125</span> </h2>
+                            <h2 id="name"> Ugmikdo Women's POLO Shirt V-Neck Short-Sleeved T-Shirt Solid Color top <span
+                                    id="price">₱125</span> </h2>
                         </div>
                         <div class="product-popup">
                             <h3> Add to Cart </h3>
@@ -371,6 +383,7 @@
                                 <th>Name</th>
                                 <th>Size</th>
                                 <th>Price</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody id="cartItems"></tbody>
@@ -470,34 +483,29 @@
         </div>
     </footer>
     <script src="script.js"></script>
-    <!-- references:
-     https://www.peakpx.com/en/hd-wallpaper-desktop-naeob
-     https://www.pinterest.com/pin/96616354485986582/
-     https://www.marvel.com/articles/gear/marvel-design-vault-exclusive-tshirt-club
-     https://www.etsy.com/listing/231925760/
-     https://pngtree.com/freebackground/collection-of-3d-illustrated-t-shirts_13301681.html
-     https://www.wallpaperflare.com/tshirts-photo-fashion-mens-fashion-clothes-t-shirts-planning-wallpaper-aanko
-     https://www.pinterest.com/pin/770256342493458012/
-     https://www.pinterest.com/pin/352195633360266022/
-     https://godfathershirts.com/product/thor-mjolnir-shirt/
-     https://www.pinterest.com/pin/615022892840661823/
-     https://mmv2api.s3-us-east-2.amazonaws.com/products/images/HWKT01.jpg
-     https://www.etsy.com/listing/1641892708/marvel-classic-the-incredible-hulk
-     https://www.pinterest.com/pin/589338301215539101/
-     https://www.carousell.ph/p/plain-black-t-shirt-1209694873/
-     https://www.etsy.com/ca/listing/786341965/blank-white-t-shirt-mockup
-     https://www.zumiez.com/zine-brown-t-shirt.html
-     https://www.freepik.com/premium-ai-image/blank-beige-tshirt-mockup-template_55115553.html
-     https://www.pinterest.com/pin/919226973915554464/
-     https://www.etsy.com/listing/945282173/
-     https://shopee.ph/-M-5XL-Plus-Size-Flannel-Fabric-Korean-Style-Long-Sleeve-Plain-T-Shirt-Handsome-Tops-Men's-Turtleneck-Pullover-Top-Fashion-High-neck-Loose-Tshirt-i.1017348295.22089381896?sp_atk=611804eb-88e3-45af-aec2-f839f33c34cc&xptdk=611804eb-88e3-45af-aec2-f839f33c34cc
-     https://shopee.ph/Half-Turtleneck-Sweater-Women-Autumn-Winter-New-Style-Slim-fit-Slimmer-Look-i.196214868.27208555895?sp_atk=d3e890da-a4f2-4c3c-85e3-57c56c68455d&xptdk=d3e890da-a4f2-4c3c-85e3-57c56c68455d
-     https://shopee.ph/Ugmikdo-Women's-POLO-Shirt-V-Neck-Short-Sleeved-T-Shirt-Solid-Color-top-i.893608767.23046863161?sp_atk=08cb036d-79d2-49bf-950b-722929bcd09c&xptdk=08cb036d-79d2-49bf-950b-722929bcd09c
-     https://www.vecteezy.com/photo/11911023-full-street-fashion-slender-figure-beautiful-face-graceful-girl-sitting-on-isolated-white-background-portrait-of-female-model-in-studio-plastic-surgery-and-aesthetic-cosmetology
-     https://www.pinterest.com/pin/496803402633287915/
-     https://www.pinterest.ca/pin/792070653217486496/
-     https://fity.club/lists/suggestions/posing-models/
-     https://wallpapercave.com/men-clothes-wallpapers
-    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadCartFromStorage();
+            updateCartCount();
+        });
+
+        function toggleCartPopup() {
+            document.querySelector('.cart-icon').addEventListener('click', function () {
+                document.getElementById('cartPopup').style.display = 'flex';
+                loadCartFromStorage();
+            });
+
+            document.querySelector('.close-popup').addEventListener('click', function () {
+                document.getElementById('cartPopup').style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == document.getElementById('cartPopup')) {
+                    document.getElementById('cartPopup').style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>
