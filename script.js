@@ -988,3 +988,20 @@ function updateCartCount() {
     const rows = document.getElementById("cartItems").rows;
     countElement.textContent = rows.length;
 }
+
+/*  SEARCH INPUT TO POTEK HIRAP */
+document.getElementById('searchInput').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const productBoxes = document.querySelectorAll('.product-box');
+    
+    productBoxes.forEach(box => {
+        const productName = box.getAttribute('data-name').toLowerCase();
+        const productMaterial = box.getAttribute('data-material').toLowerCase();
+        
+        if (productName.includes(searchTerm) || productMaterial.includes(searchTerm)) {
+            box.style.display = 'block';
+        } else {
+            box.style.display = 'none';
+        }
+    });
+});
